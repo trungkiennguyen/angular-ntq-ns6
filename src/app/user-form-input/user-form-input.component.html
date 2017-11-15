@@ -1,0 +1,3 @@
+<input placeholder="Enter Your Name" [(ngModel)]="newUser" (blur)="addUser()" (keyup.enter)="addUser()">
+<button (click)="addNewUser()">Add</button>
+<app-user-display [userName] = "userNames"></app-user-display>
