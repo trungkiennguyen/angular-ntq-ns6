@@ -3,24 +3,68 @@
   <form #staffForm="ngForm" (ngSubmit)="onSubmit(staffForm)">
     <div class="form-group">
       <label for="name">Name</label>
-      <input autocomplete="off" type="text" class="form-control" id="name" required [(ngModel)]="staff.name" name="name" #name="ngModel">
+      <input #test autocomplete="off" type="text" class="form-control" id="name" required ngModel name="name" #name="ngModel" minlength="5" maxlength="50">
+      <div class="alert alert-danger" *ngIf="name.invalid && ( name.dirty || name.touched )">
+        <div *ngIf="name.errors.required">
+          Name is required!
+        </div>
+        <div *ngIf="name.errors.minlength">
+            Name must be at least 5 characters long!
+        </div>
+        <div *ngIf="name.errors.maxlength">
+            Name must be less than 50 characters!
+        </div>
+      </div>
     </div>
 
     <div class="form-group">
-      <label for="age">Age</label>
-      <input type="text" class="form-control" id="age" required>
+      
+      <div class="radio">
+        <label>
+          <input type="radio" name="gender" id="male" value="male" checked="checked" ngModel #gender="ngModel" required>
+          Male
+        </label>
+      </div>
+      
+      <div class="radio">
+        <label>
+          <input type="radio" name="gender" id="female" value="female" checked="checked" ngModel #gender="ngModel" required>
+          Female
+        </label>
+      </div>
+      
+      
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="text" class="form-control" id="email" required ngModel name="email" #email="ngModel" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
+      <div class="alert alert-danger" *ngIf="email.invalid && ( email.dirty || email.touched )">
+        <div *ngIf="email.errors.required">
+          Email is required!
+        </div>
+        <div *ngIf="email.errors.pattern">
+            Nam invalid!
+        </div>
+      </div>
     </div>
 
     <div class="form-group">
       <label for="department">Department</label>
       
-      <select class="form-control" id="department" required="required">
-        <option *ngFor="let department of departments" [value]="department">{{ department }}</option>
+      <select class="form-control" id="department" required="required" ngModel name="department" #department="ngModel">
+        <option *ngFor="let department of departments" [ngValue]="department">{{ department }}</option>
       </select>
+
+      <div class="alert alert-danger" *ngIf="department.invalid && ( department.dirty || department.touched )">
+        <div *ngIf="department.errors.required">
+          Email is required!
+        </div>
+      </div>
       
     </div>
 
-    <button type="submit" class="btn btn-success">Submit</button>
+    <button [disabled]="!staffForm.form.valid" type="submit" class="btn btn-success">Submit</button>
   </form>
-  {{ newStaff }}
+  {{ staffForm.value | json }}
 </div>

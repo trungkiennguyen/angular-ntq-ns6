@@ -9,19 +9,19 @@ import { Staff } from '../staff';
 })
 export class StaffFormComponent implements OnInit {
   departments = ['NS1', 'NS2', 'NS3', 'NS5', 'NS6'];
-  staff = new Staff(1, 'Linh TX', 23, 'NS6');
+  staff = new Staff(1, '', '', this.departments[0]);
   submitted = false;
   constructor() { }
 
   ngOnInit() {
   }
 
-  onSubmit(f) {
-    console.log(f);
+  onSubmit(staff) {
+    console.log(staff);
   }
 
-  get newStaff() {
-    return JSON.stringify(this.staff);
+  showLog(f) {
+    console.log(f);
   }
   
 }
