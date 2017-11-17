@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1 style="color: #0658c1;">Todo App</h1>
+            <app-new-todo (reloadList)="ngOnInit()"></app-new-todo>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <h2>Todo List</h2>
+            <ul class="list-group">
+                <li class="list-group-item todo-list" *ngFor="let todo of todoList">
+                    <span [class.done]="todo.status">{{ todo.task }}</span>
+                    <span *ngIf="!todo.status">In progress</span>
+                    <span *ngIf="todo.status">Done</span>
+                    <div>
+                        <span style="cursor: pointer" (click)="deleteTask(todo.id)">Delete</span>
+                        <input type="checkbox" [checked]='todo.status'>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

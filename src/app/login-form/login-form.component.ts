@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators, Validator } from '@angular/forms';
+import { UserNameValidators } from './username.validators';
 
 @Component({
   selector: 'app-login-form',
@@ -12,7 +13,8 @@ export class LoginFormComponent implements OnInit {
   formLogin = new FormGroup({
     userName: new FormControl('', [
       Validators.required,
-      Validators.minLength(5)
+      Validators.minLength(5),
+      UserNameValidators
     ]),
     password: new FormControl('', Validators.required),
   })

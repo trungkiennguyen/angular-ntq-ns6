@@ -1,0 +1,6 @@
+<form #newTask="ngForm" (ngSubmit)="onSubmit(newTask)">
+    <div class="form-group">
+      <input required (blur)="showLog(newTask)" type="text" class="form-control"id="" placeholder="Add New Task" name="task"[(ngModel)]="task">
+    </div>
+    <button [disabled]="!newTask.form.valid" type="submit" class="btn btn-primary">Add new</button>
+</form>

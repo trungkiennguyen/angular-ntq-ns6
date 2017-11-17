@@ -12,6 +12,7 @@
           <div class="alert alert-danger" *ngIf="username.invalid &&  ( username.touched || username.dirty)">
             <div *ngIf="username.errors.required">Username is required!</div>
             <div *ngIf="username.errors.minlength">Username must be greater than 5 characters</div>
+            <div *ngIf="username.errors.UserNameValidators">Username invalid!</div>
           </div>
     </div>
     <div class="form-group">
