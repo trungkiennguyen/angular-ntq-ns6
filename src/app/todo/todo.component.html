@@ -6,6 +6,9 @@
         </div>
     </div>
     <div class="row">
+            <router-outlet></router-outlet>
+    </div>
+    <div class="row">
         <div class="col">
             <h2>Todo List</h2>
             <ul class="list-group">
@@ -15,7 +18,9 @@
                     <span *ngIf="todo.status">Done</span>
                     <div>
                         <span style="cursor: pointer" (click)="deleteTask(todo.id)">Delete</span>
-                        <input type="checkbox" [checked]='todo.status'>
+                        <span style="cursor: pointer" (click)="showFormEditTask(todo.id)">Edit</span>
+                        <i class="fa fa-check-circle-o" aria-hidden="true" *ngIf="todo.status"></i>
+                        <i class="fa fa-circle-o" aria-hidden="true" *ngIf="!todo.status"></i>
                     </div>
                 </li>
             </ul>

@@ -27,4 +27,17 @@ export class TodoService {
             }
         )
     }
+
+    getTaskById(id: number) {
+        return this.http.get(this.todoUrl + id).map(
+            (result) => {
+                console.log('dd', result);
+                return result.json();
+            }
+        )
+    }
+
+    // update(id: number) {
+    //     return this.http.put()
+    // }
 }

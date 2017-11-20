@@ -5,3 +5,15 @@
     display: flex;
     justify-content: space-between;
 }
+.fa-check-circle-o{
+    color: #00d638;
+}
+.fa-circle-o{
+    color: #696969;
+}
+.ng-invalid:not(form){
+    border-left: 5px solid red;
+}
+.ng-valid[required]{
+    border-left: 5px solid #00bf91;
+}
