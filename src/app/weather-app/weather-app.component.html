@@ -1,0 +1,12 @@
+<h1 style="text-align: center">Weather App</h1>
+<div class="form-group">
+  <input type="text" class="form-control" name="" id="" aria-describedby="helpId" placeholder="Enter City Name" [(ngModel)]="cityName" (keyup.enter)="checkWeather()">
+</div>
+<div class="spinner" *ngIf="isLoading">
+  <div class="rect1"></div>
+  <div class="rect2"></div>
+  <div class="rect3"></div>
+  <div class="rect4"></div>
+  <div class="rect5"></div>
+</div>
+<h2 *ngIf="currentWeather">{{ currentWeather.location.name }} is now {{ currentWeather.current.temp_c }} <sup>o</sup> C <img [src]=currentWeather.current.condition.icon alt=""></h2>

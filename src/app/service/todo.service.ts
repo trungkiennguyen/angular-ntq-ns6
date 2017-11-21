@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class TodoService {
@@ -9,11 +10,8 @@ export class TodoService {
     constructor(private http: Http){}
 
     getTodoList() {
-        return this.http.get(this.todoUrl).map(
-            (result) => {
-                return result.json();
-            }
-        );
+        return this.http.get(this.todoUrl).toPromise()
+        .then(res => res.json())
     }
 
     addNewTask(task: any) {

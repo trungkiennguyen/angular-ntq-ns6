@@ -14,6 +14,7 @@ import { TodoComponent } from './todo/todo.component';
 import { NewTodoComponent } from './todo/new-todo.component';
 import { EditTaskComponent } from './todo/edit-task.component';
 import { appRoutes } from './app.routes';
+import { WeatherAppComponent } from './weather-app/weather-app.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { appRoutes } from './app.routes';
     LoginFormComponent,
     TodoComponent,
     NewTodoComponent,
-    EditTaskComponent
+    EditTaskComponent,
+    WeatherAppComponent
   ],
   imports: [
     BrowserModule,

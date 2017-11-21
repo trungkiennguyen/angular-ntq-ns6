@@ -18,11 +18,9 @@ export class TodoComponent implements OnInit {
   constructor(private todoService: TodoService) { }
 
   ngOnInit() {
-    this.todoService.getTodoList().subscribe(
-      (data) => {
-        this.todoList = data;
-      }
-    );
+    this.todoService.getTodoList()
+    .then( res => this.todoList = res )
+    .catch(err => console.log('hihi', err));
   }
 
   deleteTask(idTask: number) {
