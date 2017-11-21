@@ -5,11 +5,19 @@ import { UserFormInputComponent } from './user-form-input/user-form-input.compon
 import { LoginFormComponent } from './login-form/login-form.component';
 import { TodoComponent } from './todo/todo.component';
 import { WeatherAppComponent } from './weather-app/weather-app.component';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { LoginComponent } from './login/login.component';
+import { AdminGuard } from './guard/admin.guard';
 
 const routes: Routes = [
     {
-        path: '',
+        path: 'home',
         component: UserFormInputComponent
+    },
+    {
+        path: '',
+        redirectTo: '/home',
+        pathMatch: 'full'
     },
     {
         path: 'staff',
@@ -17,7 +25,7 @@ const routes: Routes = [
     },
     {
         path: 'login',
-        component: LoginFormComponent
+        component: LoginComponent
     },
     {
         path: 'todoapp',
@@ -25,7 +33,12 @@ const routes: Routes = [
     },
     {
         path: 'weatherapp',
-        component: WeatherAppComponent
+        component: WeatherAppComponent,
+        canActivate: [AdminGuard]
+    },
+    {
+        path: '**',
+        component: PagenotfoundComponent
     }
 ]
 

@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
+import { AdminGuard } from './guard/admin.guard';
 import { AppComponent } from './app.component';
 import { UserModule } from './user/user.module';
 import { UserFormInputComponent } from './user-form-input/user-form-input.component';
@@ -15,6 +16,9 @@ import { NewTodoComponent } from './todo/new-todo.component';
 import { EditTaskComponent } from './todo/edit-task.component';
 import { appRoutes } from './app.routes';
 import { WeatherAppComponent } from './weather-app/weather-app.component';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { LoginComponent } from './login/login.component';
+import { AdminService } from './service/admin.service';
 
 
 @NgModule({
@@ -27,7 +31,9 @@ import { WeatherAppComponent } from './weather-app/weather-app.component';
     TodoComponent,
     NewTodoComponent,
     EditTaskComponent,
-    WeatherAppComponent
+    WeatherAppComponent,
+    PagenotfoundComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +43,7 @@ import { WeatherAppComponent } from './weather-app/weather-app.component';
     HttpModule,
     appRoutes
   ],
-  providers: [],
+  providers: [AdminGuard,AdminService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
