@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { AdminService } from '../service/admin.service';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-login',
@@ -10,18 +12,19 @@ import { AdminService } from '../service/admin.service';
   encapsulation: ViewEncapsulation.None
 })
 export class LoginComponent implements OnInit {
-
-  constructor(private adminService: AdminService) { }
+  
+  constructor(private adminService: AdminService, private router: Router) { }
 
   ngOnInit() {
   }
 
   onSubmit(val: any){
-    this.adminService.login(val);
+    if(val.username === 'admin' && val.password === 'admin'){
+      this.adminService.setLogin(true);
+      console.log('DASTA', this.adminService.getLogin());
+      // this.router.navigate(['/todoapp']);
+    }
   }
-
-  showLog(){
-    this.adminService.checkLogin();
-  }
-
 }
+
+// https://stackoverflow.com/questions/44099254/how-to-handle-angular-2-canactivate-route-guards

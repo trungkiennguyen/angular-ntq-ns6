@@ -9,6 +9,7 @@ export class AdminGuard implements CanActivate {
     constructor(private adminService: AdminService){}
 
     canActivate() {
-        return this.adminService.checkLogin();
+        console.log('guard',this.adminService.getLogin());
+        return this.adminService.getLogin();
     }
 }

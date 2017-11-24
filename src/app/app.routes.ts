@@ -8,6 +8,7 @@ import { WeatherAppComponent } from './weather-app/weather-app.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { LoginComponent } from './login/login.component';
 import { AdminGuard } from './guard/admin.guard';
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
     {
@@ -29,7 +30,7 @@ const routes: Routes = [
     },
     {
         path: 'todoapp',
-        component: TodoComponent
+        component: TodoComponent,
     },
     {
         path: 'weatherapp',

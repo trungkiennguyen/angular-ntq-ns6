@@ -3,23 +3,18 @@ import { Injectable } from '@angular/core';
 @Injectable()
 
 export class AdminService {
-    public isLogin: boolean = false;
+    private Logined: boolean;
 
-    login(val: any) {
-        if(val.username === 'root' && val.password === 'admin'){
-            this.isLogin = true;
-        }
-
-        console.log(this.isLogin);
-        return this.isLogin;
+    constructor() {
+        // this.Logined = false;
     }
 
-    checkLogin() {
-        console.log(this.isLogin);
-        return this.isLogin;
+    setLogin(val: boolean){
+        this.Logined = val;
+        console.log(this.Logined);
     }
 
-    logOut() {
-        this.isLogin = false;
+    getLogin():boolean{
+        return this.Logined;
     }
 }

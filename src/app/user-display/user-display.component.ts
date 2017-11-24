@@ -8,6 +8,8 @@ import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
 })
 export class UserDisplayComponent implements OnInit {
   @Input() userName: string;
+  name: string = 'You can write your own custom pipes.';
+  arr: number[] = [1,5,6,7,2,3,10,8,9];
 
   constructor() { }
 

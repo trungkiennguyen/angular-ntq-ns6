@@ -19,7 +19,11 @@ export class TodoComponent implements OnInit {
 
   ngOnInit() {
     this.todoService.getTodoList()
-    .then( res => this.todoList = res )
+    .then( 
+      (res) => {
+        this.todoList = res;
+        console.log(res);
+      } )
     .catch(err => console.log('hihi', err));
   }
 

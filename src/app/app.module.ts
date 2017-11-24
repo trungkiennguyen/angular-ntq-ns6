@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { RouterModule } from '@angular/router';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
+import { RouterModule, Router } from '@angular/router';
 
 import { AdminGuard } from './guard/admin.guard';
 import { AppComponent } from './app.component';
@@ -19,6 +20,10 @@ import { WeatherAppComponent } from './weather-app/weather-app.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { LoginComponent } from './login/login.component';
 import { AdminService } from './service/admin.service';
+import { AuthGuard } from './auth.guard';
+import { TodoHttpInterceptor } from './service/todo.interceptor';
+import { CapitalizePipe } from './pipe/capitalize.pipe';
+import { ArayPipe } from './pipe/array.pipe';
 
 
 @NgModule({
@@ -33,7 +38,9 @@ import { AdminService } from './service/admin.service';
     EditTaskComponent,
     WeatherAppComponent,
     PagenotfoundComponent,
-    LoginComponent
+    LoginComponent,
+    CapitalizePipe,
+    ArayPipe
   ],
   imports: [
     BrowserModule,
@@ -41,9 +48,18 @@ import { AdminService } from './service/admin.service';
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    appRoutes
+    appRoutes,
+    HttpClientModule
   ],
-  providers: [AdminGuard,AdminService],
+  providers: [
+    AdminGuard,
+    AdminService,
+    AuthGuard,
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: TodoHttpInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
